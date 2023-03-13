@@ -14,10 +14,10 @@ const PostDetails = ({ post }: any) => {
         <div className="col-span-1 lg:col-span-4">
           <div className="relative lg:sticky top-8">
             <PostWidget
+              slug={post.slug}
               categories={post.categories.map(
                 (category: { slug: any }) => category.slug
               )}
-              slug={post.slug}
             />
             <Categories />
           </div>
