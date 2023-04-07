@@ -45,7 +45,7 @@ export const getPosts = async () => {
 
 export const getCategories = async () => {
   const query = gql`
-    query GetGategories {
+    query GetCategories {
       categories {
         name
         slug
@@ -92,7 +92,10 @@ export const getPostDetails = async (slug) => {
   return result.post;
 };
 
+//PostWidgetで使用
 export const getSimilarPosts = async (categories, slug) => {
+  /* !の意味はプログラマがコンパイラにこの値はundefinedやnullになることはないと宣言するもの
+  変数slugは投稿固有の住所を示す文字列を、categoriesはその投稿がどのグループに属しているのかを表す文字列を取得する */
   const query = gql`
     query GetPostDetails($slug: String!, $categories: [String!]) {
       posts(

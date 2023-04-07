@@ -1,8 +1,20 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { getPosts, getPostDetails } from "../../services";
-import { PostDetail, Categories, PostWidget, Author } from "../../components";
+import {
+  PostDetail,
+  Categories,
+  PostWidget,
+  Author,
+  Loader,
+} from "../../components";
 
 const PostDetails = ({ post }: any) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
   return (
     <div className="container mx-auto px-10 mb-8">
       {/* スマホの場合は一列おきに表示。lgでは12列。 */}
